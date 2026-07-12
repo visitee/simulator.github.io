@@ -1,49 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>9up</title>
-    <link rel="icon" type="image/png" href="https://9up.us/index.png" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="index.css">
+<head><meta charset="UTF-8" />
+<title>9up</title>
+<link rel="icon" type="image/png" href="logo.png" />
+<link rel="alternate icon" type="image/x-icon" href="logo.ico" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+button{font-size:16px;padding:15px;border:none;border-radius:12px;color:black;}
+button:hover{color:white;background:gray;}
+div{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;text-align:left;width:70%;}
+</style>
 </head>
-<body>
-    <div id="scene-container"></div>
-    
-    <div id="start-overlay">
-        <div class="start-content">
-            <h1>Welcome Home📺</h1>
-            <p>Talk to the cat and start your journry🐱</p>
-            <button id="start-btn">Click to Enter</button>
-            <div class="controls-hint">
-                <span>WASD</span> move &nbsp;•&nbsp; <span>Mouse</span> look &nbsp;•&nbsp; <span>Click</span> interact
-            </div>
-        </div>
-    </div>
-    
-    <div id="crosshair">+</div>
-    
-    <div id="tooltip"></div>
-    
-    <div id="instructions">
-        WASD to move • Click to interact • ESC to exit
-    </div>
-    
-    <div id="cli-container">
-        <div id="cli-header">Terminal v1.0</div>
-        <div id="cli-output"></div>
-        <div id="cli-input-line">
-            <span class="prompt">$</span>
-            <input type="text" id="cli-input" autocomplete="off" spellcheck="false">
-        </div>
-    </div>
-    
-    <div id="cat-bubble"></div>
-    
-    <script src="index.js"></script>
+<body id="root">
+<center>
+<span style="visibility:hidden">&emsp;</span>
+<svg onclick="lightOn()" width=18px height=18px fill="currentColor" viewBox="0 0 20 20" id="moon" style="visibility:hidden" style="position:absolute;"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
+<script>
+function lightOn(){document.getElementById('root').style.background='white';document.getElementById('root').style.color='black';document.getElementById('sun').style.visibility='visible';document.getElementById('moon').style.visibility='hidden';}
+</script>
+<svg onclick="lightOff()" width=20px height=20px fill="currentColor" viewBox="0 0 20 20" id="sun" style="position:relative;right:22px;">
+<path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
+</svg>
+<script>
+function lightOff(){document.getElementById('root').style.background='black';document.getElementById('root').style.color='white';document.getElementById('moon').style.visibility='visible';document.getElementById('sun').style.visibility='hidden';}
+</script>
+<br/>
+<svg width="349" height="345"><g transform="translate(-1418 -657)">
+<path d="M1418 829.5C1418 734.231 1496.13 657 1592.5 657 1688.87 657 1767 734.231 1767 829.5 1767 924.769 1688.87 1002 1592.5 1002 1496.13 1002 1418 924.769 1418 829.5ZM1536.68 829.5C1536.68 859.224 1561.67 883.32 1592.5 883.32 1623.33 883.32 1648.32 859.224 1648.32 829.5 1648.32 799.776 1623.33 775.68 1592.5 775.68 1561.67 775.68 1536.68 799.776 1536.68 829.5Z" fill="currentColor"/>
+</g></svg>
+<br/>
+<button onclick="checkPoint()" id="checker">Server Status</button>
+<script>
+async function checkPoint() {const url = "https://9up.us"; const resultElement = document.getElementById('checker'); try {const response = await fetch(url, { method: 'HEAD' }); if (response.ok) {resultElement.textContent = 'Online 🟢';} else {resultElement.textContent = 'Offline 🔴';}} catch (error) {resultElement.textContent = 'Error 🔴';}}
+</script>
+<div>
+<b>Vision</b>
+<br/>
+At the intersection of artificial intelligence and cutting-edge on-device technologies, we envision a future where the power of data, privacy, and automation belongs to individuals, not entities.
+Our mission is to create intelligent, secure, and transparent solutions that revolutionize the way people interact with, ensuring trust, autonomy, and innovation are accessible to everyone.
+<br/><br/>
+<b>Contact</b>
+<br/>
+📧info@9up.us
+📬9up LLC, 1111B S Governors Ave STE 23216 Dover, DE 19904, United States
+</div>
+</center>
 </body>
 </html>
